@@ -1,11 +1,15 @@
+const mainContainer = document.getElementById('main-container')
+
 const displayWeather = (...items) => {
-    const weatherContainer = documen.createElement('div')
+    const weatherContainer = document.createElement('div')
     weatherContainer.classList.add('weather-container')
 
     items.forEach(item => {
+        console.log(item)
         const div = document.createElement('div')
         div.append(item)
         weatherContainer.append(div)
+        mainContainer.append(weatherContainer)
 
     })
 }
@@ -25,18 +29,12 @@ const fetchCurrentWeather = async (userInput) => {
     let windSpeed = `Wind: ${response.wind.speed} m/s`
     let humidity = `Humidity: ${response.main.humidity} %`
 
-    let info = []
-    info.push(currentWeather, feelsLike, windSpeed, humidity)
-
-    displayWeather(info)
+    displayWeather(currentWeather, feelsLike, windSpeed, humidity)
     
-    
-
-
 }
 
 
 
-const userInput = 'Moraleja del vino'
+const userInput = 'Villaralbo'
 
 fetchCurrentWeather(userInput)
