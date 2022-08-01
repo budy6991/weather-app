@@ -1,3 +1,9 @@
+let userInput = document.getElementById('userInput')
+const mainContainer = document.getElementById('main-container')
+const weatherContainer = document.querySelector('.weather-container')
+weatherContainer.style.display = 'none'
+const forecastContainer = document.querySelector('.forecast-container')
+
 const removeAllChildNodes = (parent) => {
     while (parent.firstChild) {
         parent.removeChild(parent.firstChild);
@@ -36,10 +42,17 @@ const fetchCurrentWeather = async (userInput) => {
     
 }
 
-let userInput = document.getElementById('userInput')
-const mainContainer = document.getElementById('main-container')
-const weatherContainer = document.querySelector('.weather-container')
-weatherContainer.style.display = 'none'
+const fetchForecastWeather = async (userInput) => {
+    const getLanLon = await fetch (`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=65e349a9474538ac20dbb6d8be331d95`,{"mode":"cors"})
+    const data = await getLanLon.json()
+    const lat = data[0].lat
+    const lon = data[0].lon
+    
+    const getCityWeather = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`)
+    
+    const response = await getCityWeather.json()
+    console.log(response)
+}
 
 
 document.querySelector('.search').onclick = () => {
@@ -48,10 +61,10 @@ document.querySelector('.search').onclick = () => {
        fetchCurrentWeather(userInput.value)
     }
     else if (!weatherContainer.hasChildNodes()) {
-
+        fetchForecastWeather(userInput.value)
         fetchCurrentWeather(userInput.value)
         weatherContainer.style.display = 'block'
-        console.log('Hola buenos dias')
+        
     }
 }
 

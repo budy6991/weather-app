@@ -46,11 +46,13 @@
 }
 
 .forecast-container {
-    background-color: #c7fceb;
+    background-color: #002e6e;
     border-radius: 15px;
     margin: 2em;
     grid-column: 1/4;
     grid-row: 3/5;
+    box-shadow: 1px 1px 19px
+     5px #c7fceb;
 }
 
 .weather-container > * {
