@@ -5,12 +5,20 @@ const makeFetchRequest = async (userInput) => {
     const lat = data[0].lat
     const lon = data[0].lon
     
-    const getCityWeather = await fetch (`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95`)
+    const getCityWeather = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`)
     const response = await getCityWeather.json()
 
-    console.log(response.main.temp)
+    const forecastContainer = document.querySelector('.forecast-container')
+
+    for (let i = 0; i < 8; i++) {
+        const weatherForecast = response.list[i].main.temp
+        forecastContainer.append(weatherForecast)
+        
+    }
 }
 
-const userInput = 'London'
+//We need to create a function that takes an array and, for each element of the array, creates a li-ul element, that then will be appended to a forecast-container, to show the weather forecast for 8 days, just the temperature.
+
+const userInput = 'Zaragoza'
 
 makeFetchRequest(userInput)

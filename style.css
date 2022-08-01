@@ -21,7 +21,7 @@
     display: flex;
     flex-direction: column;
     align-self: flex-start;
-    margin: 1em;
+    margin: 2em;
     padding: 1em;
     border: solid rgba(255, 255, 255, 0) 1px;
     border-radius: 15px;
@@ -31,6 +31,14 @@
 
 .input-container > * {
     margin: 1em;
+}
+
+.forecast-container {
+    width: 50vw;
+    height: 50vh;
+    background-color: antiquewhite;
+    margin: 2em;
+    border-radius: 15px;
 }
 
 input[type='text'] {
