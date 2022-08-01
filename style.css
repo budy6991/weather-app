@@ -7,17 +7,20 @@
     height: 100vh;
     width: 100vw;
     background-image: linear-gradient(to bottom, #009cec, #c7fceb);
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(1,1fr) repeat(1,3fr) repeat(1, 3fr);
+    grid-template-rows: repeat(1,1fr) repeat(1, 1fr) repeat(1, 2fr) repeat(1,3fr);
 }
 
 .header {
     padding: 1em;
     text-align: center;
     color: #c7fceb
+    
 }
 
 .input-container {
+    grid-column: 1/2;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -30,11 +33,11 @@
 }
 
 .weather-container {
-    float: right;
+    
     margin: 2em;
-    width: 50vw;
-    height: 50vh;
-    background-color: #fff;
+    background-color: #c7fceb;
+    
+    padding: 1em;
 }
 
 .input-container > * {
