@@ -45,6 +45,14 @@
      5px #c7fceb;
 }
 
+.forecast-container {
+    background-color: #c7fceb;
+    border-radius: 15px;
+    margin: 2em;
+    grid-column: 1/4;
+    grid-row: 3/5;
+}
+
 .weather-container > * {
     margin: 1em;
 }
@@ -58,13 +66,6 @@
     margin: 1em;
 }
 
-.forecast-container {
-    width: 50vw;
-    height: 50vh;
-    background-color: antiquewhite;
-    margin: 2em;
-    border-radius: 15px;
-}
 
 input[type='text'] {
     text-align: center;
