@@ -29,6 +29,14 @@
      8px #c7fceb;
 }
 
+.weather-container {
+    float: right;
+    margin: 2em;
+    width: 50vw;
+    height: 50vh;
+    background-color: #fff;
+}
+
 .input-container > * {
     margin: 1em;
 }
