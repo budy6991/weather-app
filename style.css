@@ -28,16 +28,30 @@
     padding: 1em;
     border: solid rgba(255, 255, 255, 0) 1px;
     border-radius: 15px;
-    box-shadow: 10px 10px 8px
-     8px #c7fceb;
+    box-shadow: 1px 1px 19px
+     5px #c7fceb;
 }
 
 .weather-container {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     margin: 2em;
-    background-color: #c7fceb;
-    
+    background-color: #e7fff7;
+    border-radius: 15px;
     padding: 1em;
+    box-shadow: 1px 1px 19px
+     5px #c7fceb;
+}
+
+.weather-container > * {
+    margin: 1em;
+}
+
+.weather-container > :nth-child(1) {
+    font-size: xx-large;
+    font-style: italic;
 }
 
 .input-container > * {
