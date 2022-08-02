@@ -49,7 +49,7 @@ const fetchCurrentWeather = async (userInput) => {
   const { lat } = data[0];
   const { lon } = data[0];
 
-  const getCityWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`);
+  const getCityWeather = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`, { mode: 'cors' });
 
   const response = await getCityWeather.json();
   const title = `Weather in ${userInput}`;
@@ -68,7 +68,7 @@ const fetchForecastWeather = async (userInput) => {
   const { lat } = data[0];
   const { lon } = data[0];
 
-  const getCityWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`);
+  const getCityWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`, { mode: 'cors' });
 
   const response = await getCityWeather.json();
 
