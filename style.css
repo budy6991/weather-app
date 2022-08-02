@@ -61,7 +61,7 @@
 .forecast-card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
     height: 250px;
     width: 200px;
@@ -70,6 +70,24 @@
     box-shadow: 1px 1px 11px
      1px #c7fceb;
      border-radius: 15px;
+}
+
+.forecast-card > :nth-child(1) {
+    margin-top: 2em;
+    flex: 1;
+}
+
+.forecast-card > :nth-child(2) {
+    flex: 2;
+}
+
+.image-container {
+    display: flex;
+    grid-column: 3/4;
+    grid-row: 2/3;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
 
 .weather-container > * {

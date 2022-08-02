@@ -4,6 +4,7 @@ const weatherContainer = document.querySelector('.weather-container');
 weatherContainer.style.display = 'none';
 const forecastContainer = document.querySelector('.forecast-container');
 forecastContainer.style.display = 'none';
+const imageContainer =  document.querySelector('.image-container')
 
 const removeAllChildNodes = (parent) => {
   while (parent.firstChild) {
@@ -14,12 +15,17 @@ const removeAllChildNodes = (parent) => {
 const displayWeather = (...items) => {
   items.forEach((item) => {
     const div = document.createElement('div');
-
     div.append(item);
     weatherContainer.append(div);
     mainContainer.append(weatherContainer);
   });
 };
+
+const displayAnimation = (condition, container) => {
+  const condToLowerCase = condition.toLowerCase();
+  console.log(condToLowerCase)
+  container.style.backgroundImage = `url("./assets/${condToLowerCase}.svg")`
+}
 
 const displayWeatherForecast = (dayName, ...items) => {
   items.forEach((item) => {
@@ -28,7 +34,7 @@ const displayWeatherForecast = (dayName, ...items) => {
     const paraTwo = document.createElement('p');
     div.classList.add('forecast-card');
     para.append(dayName);
-    paraTwo.append(item);
+    paraTwo.append(item + '°C');
     div.append(para, paraTwo);
     forecastContainer.append(div);
   });
@@ -48,6 +54,11 @@ const fetchCurrentWeather = async (userInput) => {
   const feelsLike = `Feels like: ${response.main.feels_like} °C`;
   const windSpeed = `Wind: ${response.wind.speed} m/s`;
   const humidity = `Humidity: ${response.main.humidity} %`;
+  let condition = response.weather[0].main
+
+  console.log(condition)
+
+  displayAnimation(condition, imageContainer)
 
   displayWeather(title, currentWeather, feelsLike, windSpeed, humidity);
 };
