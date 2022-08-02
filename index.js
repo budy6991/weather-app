@@ -6,6 +6,7 @@ const forecastContainer = document.querySelector('.forecast-container');
 forecastContainer.style.display = 'none';
 const imageContainer =  document.querySelector('.image-container')
 
+
 const removeAllChildNodes = (parent) => {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
@@ -21,22 +22,29 @@ const displayWeather = (...items) => {
   });
 };
 
-const displayAnimation = (condition, container) => {
+const displayAnimation = (container, condition) => {
   const condToLowerCase = condition.toLowerCase();
-  console.log(condToLowerCase)
   container.style.backgroundImage = `url("./assets/${condToLowerCase}.svg")`
 }
 
-const displayWeatherForecast = (dayName, ...items) => {
+const displayAnimationForecast = (container, ...condition) => {
+  container.style.backgroundImage = `url("./assets/${condition}.svg")`
+}
+
+const displayWeatherForecast = (dayName, condition, ...items) => {
   items.forEach((item) => {
     const div = document.createElement('div');
+    const forecastAnimation = document.createElement('div')
+    
     const para = document.createElement('p');
     const paraTwo = document.createElement('p');
+    forecastAnimation.classList.add('forecast-animation')
     div.classList.add('forecast-card');
     para.append(dayName);
     paraTwo.append(item + '°C');
-    div.append(para, paraTwo);
+    div.append(para, paraTwo, forecastAnimation);
     forecastContainer.append(div);
+    displayAnimationForecast(forecastAnimation, condition)
   });
 };
 
@@ -55,11 +63,7 @@ const fetchCurrentWeather = async (userInput) => {
   const windSpeed = `Wind: ${response.wind.speed} m/s`;
   const humidity = `Humidity: ${response.main.humidity} %`;
   let condition = response.weather[0].main
-
-  console.log(condition)
-
-  displayAnimation(condition, imageContainer)
-
+  displayAnimation(imageContainer, condition)
   displayWeather(title, currentWeather, feelsLike, windSpeed, humidity);
 };
 
@@ -79,7 +83,11 @@ const fetchForecastWeather = async (userInput) => {
     if (response.list[i].dt_txt.includes('15:00:00')) {
       const date = new Date(response.list[i].dt * 1000);
       const dayName = days[date.getDay()];
-      displayWeatherForecast(dayName, response.list[i].main.temp);
+      let cond = response.list[i].weather[0].main
+      let condition = cond.toLowerCase()
+      displayWeatherForecast(dayName, condition, response.list[i].main.temp);
+      
+      
     }
   }
 };

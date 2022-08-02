@@ -75,10 +75,18 @@
 .forecast-card > :nth-child(1) {
     margin-top: 2em;
     flex: 1;
+    font-size: larger
 }
 
 .forecast-card > :nth-child(2) {
-    flex: 2;
+    flex: 1;
+}
+
+.forecast-animation {
+   height: 100px;
+   width: 100px;
+   background-repeat: no-repeat;
+   background-size: contain;
 }
 
 .image-container {
