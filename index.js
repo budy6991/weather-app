@@ -52,10 +52,15 @@ const fetchForecastWeather = async (userInput) => {
     
     const response = await getCityWeather.json()
     
+    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     
-    for (let i = 0; i < response.list.length; i++) {
+    
+    for (let i = 2; i < response.list.length; i++) {
         if(response.list[i].dt_txt.includes('15:00:00')) {
-            console.log(response.list[i].dt_txt)
+            let date = new Date (response.list[i].dt * 1000)
+            let dayName = days[date.getDay()]
+            console.log(dayName)
+            
         }
     }
 }
@@ -65,6 +70,7 @@ document.querySelector('.search').onclick = () => {
     if (weatherContainer.hasChildNodes()) {
        removeAllChildNodes(weatherContainer)
        fetchCurrentWeather(userInput.value)
+       fetchForecastWeather(userInput.value)
     }
     else if (!weatherContainer.hasChildNodes()) {
         fetchForecastWeather(userInput.value)
