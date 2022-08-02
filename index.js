@@ -26,6 +26,10 @@ const displayAnimation = (container, condition) => {
   container.style.backgroundImage = `url("./assets/${condToLowerCase}.svg")`;
 };
 
+const displayAnimationForecast = (container, ...condition) => {
+  container.style.backgroundImage = `url("./assets/${condition}.svg")`;
+};
+
 const displayWeatherForecast = (dayName, condition, ...items) => {
   items.forEach((item) => {
     const div = document.createElement('div');
@@ -44,7 +48,7 @@ const displayWeatherForecast = (dayName, condition, ...items) => {
 };
 
 const fetchCurrentWeather = async (userInput) => {
-  const getLanLon = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=65e349a9474538ac20dbb6d8be331d95`, { mode: 'cors' });
+  const getLanLon = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=65e349a9474538ac20dbb6d8be331d95`, { mode: 'cors' });
   const data = await getLanLon.json();
   const { lat } = data[0];
   const { lon } = data[0];
@@ -63,12 +67,12 @@ const fetchCurrentWeather = async (userInput) => {
 };
 
 const fetchForecastWeather = async (userInput) => {
-  const getLanLon = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=65e349a9474538ac20dbb6d8be331d95`, { mode: 'cors' });
+  const getLanLon = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${userInput}&appid=65e349a9474538ac20dbb6d8be331d95`, { mode: 'cors' });
   const data = await getLanLon.json();
   const { lat } = data[0];
   const { lon } = data[0];
 
-  const getCityWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`, { mode: 'cors' });
+  const getCityWeather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`,{ mode: 'cors' });
 
   const response = await getCityWeather.json();
 
