@@ -26,10 +26,6 @@ const displayAnimation = (container, condition) => {
   container.style.backgroundImage = `url("./assets/${condToLowerCase}.svg")`;
 };
 
-const displayAnimationForecast = (container, ...condition) => {
-  container.style.backgroundImage = `url("./assets/${condition}.svg")`;
-};
-
 const displayWeatherForecast = (dayName, condition, ...items) => {
   items.forEach((item) => {
     const div = document.createElement('div');
