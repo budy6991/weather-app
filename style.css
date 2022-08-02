@@ -46,7 +46,6 @@
 }
 
 .forecast-container {
-    display: grid;
     background-color: #002e6e;
     border-radius: 15px;
     margin: 2em;
@@ -54,12 +53,23 @@
     grid-row: 3/5;
     box-shadow: 1px 1px 19px
      5px #c7fceb;
+     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+     justify-items: center;
+     align-items: center;
 }
 
 .forecast-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    width: 150px;
     background-color: white;
     margin: 1em;
-    
+    box-shadow: 1px 1px 11px
+     1px #c7fceb;
+     border-radius: 15px;
 }
 
 .weather-container > * {
