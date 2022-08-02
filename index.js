@@ -51,7 +51,13 @@ const fetchForecastWeather = async (userInput) => {
     const getCityWeather = await fetch (`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=65e349a9474538ac20dbb6d8be331d95&units=metric`)
     
     const response = await getCityWeather.json()
-    console.log(response)
+    
+    
+    for (let i = 0; i < response.list.length; i++) {
+        if(response.list[i].dt_txt.includes('15:00:00')) {
+            console.log(response.list[i].dt_txt)
+        }
+    }
 }
 
 
