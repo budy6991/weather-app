@@ -3,6 +3,7 @@ const mainContainer = document.getElementById('main-container')
 const weatherContainer = document.querySelector('.weather-container')
 weatherContainer.style.display = 'none'
 const forecastContainer = document.querySelector('.forecast-container')
+forecastContainer.style.display = 'none'
 
 const removeAllChildNodes = (parent) => {
     while (parent.firstChild) {
@@ -14,10 +15,25 @@ const displayWeather = (...items) => {
     
     items.forEach(item => {
         const div = document.createElement('div')
+        
         div.append(item)
         weatherContainer.append(div)
         mainContainer.append(weatherContainer)
         
+    })
+}
+
+const  displayWeatherForecast = (dayName, ...items) => {
+    
+    items.forEach(item => {
+        const div = document.createElement('div')
+        const para = document.createElement('p')
+        const paraTwo = document.createElement('p')
+        div.classList.add('forecast-card')
+        para.append(dayName)
+        paraTwo.append(item)
+        div.append(para, paraTwo)
+        forecastContainer.append(div)
     })
 }
 
@@ -52,15 +68,19 @@ const fetchForecastWeather = async (userInput) => {
     
     const response = await getCityWeather.json()
     
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    let days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     
     
     for (let i = 2; i < response.list.length; i++) {
         if(response.list[i].dt_txt.includes('15:00:00')) {
             let date = new Date (response.list[i].dt * 1000)
             let dayName = days[date.getDay()]
-            console.log(dayName)
-            
+            console.log(dayName, response.list[i].main.temp)
+            // let fullName = `${dayName}  ${response.list[i].main.temp
+            // }`
+
+
+            displayWeatherForecast(dayName, response.list[i].main.temp)
         }
     }
 }
@@ -69,6 +89,7 @@ const fetchForecastWeather = async (userInput) => {
 document.querySelector('.search').onclick = () => {
     if (weatherContainer.hasChildNodes()) {
        removeAllChildNodes(weatherContainer)
+       removeAllChildNodes(forecastContainer)
        fetchCurrentWeather(userInput.value)
        fetchForecastWeather(userInput.value)
     }
@@ -76,7 +97,7 @@ document.querySelector('.search').onclick = () => {
         fetchForecastWeather(userInput.value)
         fetchCurrentWeather(userInput.value)
         weatherContainer.style.display = 'block'
-        
+        forecastContainer.style.display = 'block'
     }
 }
 

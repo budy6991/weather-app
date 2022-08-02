@@ -46,6 +46,7 @@
 }
 
 .forecast-container {
+    display: grid;
     background-color: #002e6e;
     border-radius: 15px;
     margin: 2em;
@@ -53,6 +54,12 @@
     grid-row: 3/5;
     box-shadow: 1px 1px 19px
      5px #c7fceb;
+}
+
+.forecast-card {
+    background-color: white;
+    margin: 1em;
+    
 }
 
 .weather-container > * {
