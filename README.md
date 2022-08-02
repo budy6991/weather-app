@@ -2,7 +2,7 @@
 
 Weather application done through API.
 
-You can have a look at the result <a href="https://budy6991.github.io/gif-search-box/">here</a>
+You can have a look at the result <a href="https://budy6991.github.io/weather-app/">here</a>
 
 # Assets
 
