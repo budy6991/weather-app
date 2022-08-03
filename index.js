@@ -83,7 +83,10 @@ const fetchForecastWeather = async (userInput) => {
     if (response.list[i].dt_txt.includes('15:00:00')) {
       const date = new Date(response.list[i].dt * 1000);
       let dayName = days[date.getDay()];
+<<<<<<< HEAD
       console.log(dayName)
+=======
+>>>>>>> c625a0e419c680db825cea4b203463369f853789
       const cond = response.list[i].weather[0].main;
       const condition = cond.toLowerCase();
       displayWeatherForecast(dayName, condition, response.list[i].main.temp);
