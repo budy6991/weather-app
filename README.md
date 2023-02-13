@@ -1,8 +1,10 @@
 # weather-app
 
-Weather application done through API.
+Weather application done with API.
 
 You can have a look at the result <a href="https://budy6991.github.io/weather-app/">here</a>
+
+<img src='./assets/weather-screenshot.jpg'>
 
 # Assets
 
